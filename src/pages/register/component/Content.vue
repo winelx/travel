@@ -106,7 +106,7 @@
     height: 50px;
     width: 90%;
     margin-bottom: 5px;
-    padding-left: 10%;
+    padding-left: 8%;
     border: 0;
     border-bottom: solid 1px lavender;
 
