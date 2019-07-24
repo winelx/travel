@@ -60,7 +60,6 @@
     width: 100%
     height: 100%
     .login_form
-      margin-top 2rem
       width 100%
       height 5rem
       display flex
@@ -87,9 +86,11 @@
           background-position: 3%;
         .login_btn
           width: 100%;
+          height 1rem
           font-size: 16px;
           border-radius 0.2rem
           margin-top 0.5rem
+          color white
           background: linear-gradient(to right, #000099, #2154FA); /* 标准的语法 */
           filter: brightness(1.4);
 

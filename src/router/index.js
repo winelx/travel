@@ -4,6 +4,8 @@ import Home from '../pages/home/Home'
 import Hotel from '../pages/hotel/Hotel'
 import Login from '../pages/login/Login'
 import Register from '../pages/register/Register'
+import Subscribe from '../pages/subscribe/subscribe'
+import calendar from '../common/calendar/calendar'
 
 Vue.use(Router)
 
@@ -23,12 +25,22 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
-    }, {
+    },
+    {
       path: '/register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/subscribe',
+      name: 'Subscribe',
+      component: Subscribe
+    },
+    {
+      path: '/calendar',
+      name: 'Calendar',
+      component: calendar
     }
-
   ],
   //界面切换时初始化界面高度
   scrollBehavior(to, form, savePosition) {

@@ -1,28 +1,28 @@
 <template>
   <div>
     <base-header :title="title"></base-header>
-    <login-content></login-content>
+    <subscribe-content></subscribe-content>
   </div>
 </template>
 
 <script>
   import BaseHeader from "../../common/header/BaseHeader"
-  import LoginContent from './component/Content'
+  import SubscribeContent from "./component/Content"
 
   export default {
-    name: "Register",
+    name: "subscribe",
     data() {
       return {
-        title: "注册"
+        title: "预订"
       }
     },
     components: {
       BaseHeader,
-      LoginContent
+      SubscribeContent
     }
   }
 </script>
 
-<style lang="stylus" scoped>
+<style scoped>
 
 </style>

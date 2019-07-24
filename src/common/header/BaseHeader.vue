@@ -4,28 +4,26 @@
       <div class="iconfont back-icon">&#xe624;</div>
     </router-link>
     <div class="title">
-      <p>注册</p>
+      <p>{{title}}</p>
     </div>
     <div class="back">
-
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    data() {
-      return {
-
-      }
-    },
+    name: "Header",
+    props:{
+      title:String
+    }
   }
-
 </script>
 
 <style lang="stylus" scoped>
   .con
     width 100%
+    float top
     height 50px
     margin 0
     padding 0
@@ -34,16 +32,18 @@
     background #25a4bb
 
   .back
+    color white
     display flex
-    padding-left 10px
     flex-direction row
     width 20%
     margin 0 auto
+    padding-left 0.22rem
     line-height 50px
     text-align center
 
   .title
     width 60%
+    color white
     margin 0 auto
     line-height 50px
     font-size 0.35rem

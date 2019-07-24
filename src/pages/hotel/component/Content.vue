@@ -1,6 +1,6 @@
 <template>
   <div class="con">
-    <div class="list">
+    <div class="list" v-for="(item,index) of list" :key="item.id">
       <div class="item-img">
         <img class="img" v-bind:src="imge">
       </div>
@@ -8,7 +8,7 @@
         <div class="house">
           <div class="house-name">
             <p>单人间</p>
-            <p class="content">可预订</p>
+            <p class="content">可预订{{index}}</p>
           </div>
           <div class="house-content">
             <p class="content">单人间</p>
@@ -19,7 +19,6 @@
           <div class="button">预订</div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -27,6 +26,9 @@
 <script>
   export default {
     name: "Content",
+    props: {
+      list: Array
+    },
     data() {
       return {
         imge: "//imgs.qunarzz.com/p/tts5/1704/7c/d44de0a04af9be02.jpg_r_390x260x90_e88f5cdc.jpg",
@@ -48,7 +50,7 @@
   .con
     width 100%
     height 100%
-    padding 0
+    padding-top 50px
     margin 0;
     .list
       width 100%
@@ -92,9 +94,7 @@
       .subscribe
         width 20%
         height 1.3rem
-        position relative
         .button
-          position: absolute;
           font-size 0.1rem
           text-align center
           border-radius 0.1rem
@@ -106,7 +106,8 @@
           right: 0;
           width: 1rem;
           height: 40%;
-          margin: auto;
+          margin-top 0.25rem
+          margin-left 0.2rem
           background #dc242e
 
   .content

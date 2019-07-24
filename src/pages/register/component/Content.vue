@@ -45,16 +45,25 @@
           console.log("请输入邮箱")
           return;
         }
-        this.$api.register(id, {
+        const pst = {
           username: this.userName,
           password: this.password,
           email: this.email
-        }).then(this.getHomeInfoSucc)
+        }
+        axios({
+          method: 'post',
+          url: '/api/admin/sys/user/regUser',
+          data: Qs.stringify(pst)
+        }).then(function (response) {
+          console.log(response);
+        }).catch(function (error) {
+          console.log(error);
+        });
       },
-      getHomeInfoSucc(res) {
-        res = res.data
-        console.log(res)
-      }
+    },
+    getHomeInfoSucc(res) {
+      res = res.data
+      console.log(res)
     }
   }
 </script>
@@ -99,6 +108,7 @@
           font-size: 16px;
           border-radius 0.2rem
           margin-top 0.5rem
+          color white
           background: linear-gradient(to right, #000099, #2154FA); /* 标准的语法 */
           filter: brightness(1.4);
 
