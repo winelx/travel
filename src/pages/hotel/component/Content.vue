@@ -1,18 +1,19 @@
 <template>
   <div class="con">
-    <div class="list" v-for="(item,index) of list" :key="item.id">
+    <div class="list" v-for="(item,index) of list" :key="index">
       <div class="item-img">
-        <img class="img" v-bind:src="imge">
+        <img class="img" :src="baseurl+item.filepath">
       </div>
       <div class="item-content">
         <div class="house">
           <div class="house-name">
-            <p>单人间</p>
-            <p class="content">可预订{{index}}</p>
+            <p>{{item.roomName}}</p>
+            <p class="content">可预订</p>
+            <div class="price">单机</div>
           </div>
           <div class="house-content">
-            <p class="content">单人间</p>
-            <p class="content">房间大小为40m</p>
+            <p class="content">{{item.description}}</p>
+            <!--<p class="content">房间大小为40m</p>-->
           </div>
         </div>
         <div class="subscribe">
@@ -31,16 +32,7 @@
     },
     data() {
       return {
-        imge: "//imgs.qunarzz.com/p/tts5/1704/7c/d44de0a04af9be02.jpg_r_390x260x90_e88f5cdc.jpg",
-        list: [
-          {
-            imge: "https://ypt360.com/resources/upload/1547863202049.jpg",
-            name: "单人间",
-            status: "",
-            content: "",
-          }
-
-        ]
+        baseurl: "http://192.168.20.36:8090/jtly"
       }
     }
   }
@@ -112,4 +104,10 @@
 
   .content
     font-size 0.13rem
+
+  .price
+    display flex
+    position relative
+    color red
+    float right
 </style>

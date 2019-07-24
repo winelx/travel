@@ -10,9 +10,10 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api':{
+      '/api': {
         target:'http://192.168.20.36:8090/jtly',
-        changeOrigin:true,
+        //target: 'http://192.168.20.35:8082/jtly',
+        changeOrigin: true,
         pathRewrite: {
           '^/api': ''   //需要rewrite的,
         }
