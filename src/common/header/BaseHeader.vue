@@ -1,8 +1,8 @@
 <template>
   <div class="con">
-    <router-link tag="div" class="back" to="/">
+    <div  class="back" @click="back">
       <div class="iconfont back-icon">&#xe624;</div>
-    </router-link>
+    </div>
     <div class="title">
       <p>{{title}}</p>
     </div>
@@ -16,7 +16,12 @@
     name: "Header",
     props:{
       title:String
-    }
+    },
+    methods:{
+      back(){
+        this.$router.go(-1);//返回上一层
+      },
+    },
   }
 </script>
 
@@ -48,5 +53,6 @@
     line-height 50px
     font-size 0.35rem
     text-align center
+
 
 </style>

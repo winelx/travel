@@ -3,7 +3,6 @@
     <div class="header">
       <base-header :title="title"></base-header>
     </div>
-
   <hotel-content  :list="list"></hotel-content>
   </div>
 </template>
@@ -12,7 +11,6 @@
   import BaseHeader from "../../common/header/BaseHeader"
   import HotelContent from './component/Content'
   import axios from "axios"
-
   export default {
     name: "Hotel",
     data() {
@@ -30,15 +28,14 @@
     },
     methods: {
       request() {
-        console.log("网络请求")
         axios({
           method: 'post',
           url: '/api/admin/jtlymanage/jtlymanageroom/getRoomDataList',
         }).then(this.getHomeInfoSucc)
       },
       getHomeInfoSucc(res) {
-        this.list = res.data
-        console.log(this.list)
+        const data = res.data
+        this.list=data.data
       }
     },
   }

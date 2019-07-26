@@ -42,11 +42,24 @@
           this.$message.error('请输入密码');
           return;
         }
-        axios.get('/api/index.json?city=',{
-
-        })
-          .then(this.getHomeInfoSucc)
+        const pst = {
+          username: this.userName,
+          password: this.password,
+        }
+        axios({
+          method: 'post',
+          url: '/api/login',
+          data: Qs.stringify(pst)
+        }).then(function (response) {
+          console.log(response);
+        }).catch(function (error) {
+          console.log(error);
+        });
       },
+      /**
+       *
+       * @param res
+       */
       getHomeInfoSucc(res) {
         res = res.data
         console.log(res)

@@ -6,6 +6,7 @@ import Login from '../pages/login/Login'
 import Register from '../pages/register/Register'
 import Subscribe from '../pages/subscribe/subscribe'
 import calendar from '../common/calendar/calendar'
+import RoomDetails from '../pages/details/RoomDetails'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/calendar',
       name: 'Calendar',
       component: calendar
+    },
+    {
+      path: '/roomdetails',
+      name: 'RoomDetails',
+      component: RoomDetails
     }
   ],
   //界面切换时初始化界面高度

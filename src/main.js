@@ -10,7 +10,6 @@ import 'styles/border.css'
 import 'styles/iconfont.css'
 import 'swiper/dist/css/swiper.css'
 import axios from 'axios'
-
 //允许跨域
 axios.defaults.withCredentials=true
 //请求超时

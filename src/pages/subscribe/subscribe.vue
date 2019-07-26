@@ -19,6 +19,16 @@
     components: {
       BaseHeader,
       SubscribeContent
+    },
+    methods: {
+      init() {
+        console.log(this.$route.query.id)
+        console.log(this.$route.query.name)
+      }
+    },
+    created() {
+      this.init();
+
     }
   }
 </script>

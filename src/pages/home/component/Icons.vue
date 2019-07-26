@@ -42,7 +42,6 @@
     },
     methods: {
       itemclick(index) {
-        console.log(index + "")
         if (index === '01') {
           this.$router.push({name: 'Hotel'});
         } else if (index === "02") {

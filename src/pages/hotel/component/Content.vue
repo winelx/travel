@@ -1,23 +1,22 @@
 <template>
   <div class="con">
-    <div class="list" v-for="(item,index) of list" :key="index">
+    <div class="list" v-for="(item,index) of list" :key="index" @click="itemClick(index)">
       <div class="item-img">
-        <img class="img" :src="baseurl+item.filepath">
+        <img class="img" :src="baseurl+ item.filepath">
       </div>
       <div class="item-content">
         <div class="house">
           <div class="house-name">
             <p>{{item.roomName}}</p>
-            <p class="content">可预订</p>
-            <div class="price">单机</div>
+            <div class="price">${{item.price}}</div>
           </div>
           <div class="house-content">
-            <p class="content">{{item.description}}</p>
+            <p class="description">{{item.description}}</p>
             <!--<p class="content">房间大小为40m</p>-->
           </div>
         </div>
         <div class="subscribe">
-          <div class="button">预订</div>
+          <div class="button" @click="subscribeClick(index)">预订</div>
         </div>
       </div>
     </div>
@@ -25,6 +24,8 @@
 </template>
 
 <script>
+  import axios from "axios"
+
   export default {
     name: "Content",
     props: {
@@ -32,7 +33,41 @@
     },
     data() {
       return {
-        baseurl: "http://192.168.20.36:8090/jtly"
+        baseurl: "http://192.168.20.35:8082/jtly/"
+      }
+    },
+    methods: {
+      subscribeClick(index) {
+        axios.post('/api/admin/jtlymanage/jtlymanageroom/getRoomDataList')
+          .then(res => {
+            // if (res.headers['set-cookie'] === undefined) {
+            //   this.$router.push({name: 'Login'})
+            // } else {
+            //   this.$router.push({
+            //     name: 'Subscribe', query: {
+            //       id: this.list[index].roomId,
+            //       name: this.list[index].roomName,
+            //     }
+            //   })
+            // }
+            this.$router.push({
+              name: 'Subscribe', query: {
+                id: this.list[index].roomId,
+                name: this.list[index].roomName,
+                name: this.list[index].price,
+              }
+            })
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      },
+      itemClick(index){
+        this.$router.push({
+          name: 'RoomDetails', query: {
+            id: this.list[index].roomId,
+          }
+        })
       }
     }
   }
@@ -59,9 +94,12 @@
       .item-content
         display flex
         flex-direction row
-        width 80%
+        width 85%
         height 1.3rem
         padding 0.1rem
+        .content
+          font-size 0.13rem
+          margin-left 0.3rem
         .house
           width 80%
           height 1.3rem
@@ -83,8 +121,14 @@
             color #000
             display flex
             flex-direction row
+            .description
+              font-size 0.13rem
+              display: inline-block;
+              white-space: inherit || normal;
+              overflow: hidden;
+              text-overflow: ellipsis;
       .subscribe
-        width 20%
+        width 15%
         height 1.3rem
         .button
           font-size 0.1rem
@@ -92,22 +136,13 @@
           border-radius 0.1rem
           line-height 200%
           color white
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
           width: 1rem;
-          height: 40%;
-          margin-top 0.25rem
-          margin-left 0.2rem
+          margin-top 0.35rem
           background #dc242e
-
-  .content
-    font-size 0.13rem
-
-  .price
-    display flex
-    position relative
-    color red
-    float right
+      .price
+        display flex
+        position relative
+        margin-left 0.5rem
+        color red
+        float right
 </style>
