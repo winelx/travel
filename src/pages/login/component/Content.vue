@@ -21,7 +21,14 @@
         userName: '',
         password: '',
         isBtnLoading: false,
+        jsonid: "",
 
+      }
+    },
+    computed: {
+      count() {
+        this.$root.jsonId = this.jsonid
+        return this.$root.jsonId;
       }
     },
     created() {
@@ -49,10 +56,8 @@
         ).then(function (response) {
           const data = response.data;
           const json = data.extend.JSESSIONID
-          debugger
-          console.log(json)
-          this.$root.jsonId = "sadsa"
-          console.log("json：" + this.$root.jsonId)
+          this.jsonid = json
+          Console.log(this.count());
           const rets = data.ret;
           if (rets === 0) {
             this.back()
@@ -61,7 +66,6 @@
         });
       },
       /**
-       *
        * @param res
        */
       getHomeInfoSucc(res) {
@@ -79,6 +83,7 @@
   .con
     width: 100%
     height: 100%
+
     .login_form
       width 100%
       height 5rem
@@ -86,6 +91,7 @@
       line-height 5rem
       flex-direction column
       position relative
+
       .tab
         width 80%
         height 1.5rem
@@ -96,14 +102,17 @@
         left: 0;
         right: 0;
         line-height 1rem
+
         .qxs-ic_user
           background: url("../../../assets/login/ic_user.png") no-repeat;
           background-size: 13px 15px;
           background-position: 3%;
+
         .qxs-ic_password
           background: url("../../../assets/login/ic_password.png") no-repeat;
           background-size: 13px 15px;
           background-position: 3%;
+
         .login_btn
           width: 100%;
           height 1rem
