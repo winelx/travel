@@ -8,7 +8,7 @@
 <script>
   import BaseHeader from "../../common/header/BaseHeader"
   import SubscribeContent from "./component/Content"
-
+  //车辆预订
   export default {
     name: "Subscribe",
     props:{

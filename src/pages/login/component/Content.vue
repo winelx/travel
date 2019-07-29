@@ -20,7 +20,8 @@
       return {
         userName: '',
         password: '',
-        isBtnLoading: false
+        isBtnLoading: false,
+
       }
     },
     created() {
@@ -30,34 +31,34 @@
       }
     },
     methods: {
+      back() {
+        this.$router.go(-1);//返回上一层
+      },
       login() {
-        console.log("登陆")
         if (!this.userName) {
           return;
         }
         if (!this.password) {
           return;
         }
-        const  da={
+        const da = {
           username: this.userName,
           password: this.password,
         }
-        axios.post('/iface/mobile/login',Qs.stringify(da)
+        axios.post('/api/iface/mobile/login', Qs.stringify(da)
         ).then(function (response) {
-
+          const data = response.data;
+          const json = data.extend.JSESSIONID
+          debugger
+          console.log(json)
+          this.$root.jsonId = "sadsa"
+          console.log("json：" + this.$root.jsonId)
+          const rets = data.ret;
+          if (rets === 0) {
+            this.back()
+          }
         }).catch(function (error) {
-
         });
-
-        // axios({
-        //   method: 'post',
-        //   url: '/api/admin/login',
-        //   data: Qs.stringify(pst)
-        // }).then(function (response) {
-        //   console.log(response);
-        // }).catch(function (error) {
-        //   console.log(error);
-        // });
       },
       /**
        *
@@ -67,6 +68,9 @@
         res = res.data
         console.log(res)
       }
+    },
+    created() {
+
     }
   }
 </script>

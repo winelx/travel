@@ -53,15 +53,12 @@
       Swiper,
       Icons,
     },
-
-
     mounted() {
       //第一次进入界面后请求数据
 
 
     },
-    activated() {
-
+    created(){
     }
   }
 </script>

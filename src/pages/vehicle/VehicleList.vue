@@ -1,7 +1,7 @@
 <template>
   <div class="con">
     <base-header :title="title"></base-header>
-    <div class="item" v-for="item of data">
+    <div class="item" v-for="(item,index) of data" @click="itemClick(index)">
       <div class="content">
         <div class="con-content">
           <div class="carNumber">车牌:{{item.carNumber}}</div>
@@ -9,11 +9,11 @@
         </div>
         <div class="con-content">
           <div>限载:{{item.numberOfPeople}}</div>
-          <div class="carType">车辆类型:{{item.carType}}</div>
+          <div class="carType">车辆类型:{{item.carType | cartype}}</div>
         </div>
       </div>
       <div class="subscribe">
-        <button class="btn">预订</button>
+        <p class="btn">预订</p>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
     name: "VehicleList",
     data() {
       return {
-        data: "",
+        data: [],
         title: '车辆列表',
 
       }
@@ -37,7 +37,30 @@
     components: {
       BaseHeader,
     },
+    filters: {
+      cartype(val) {
+        console.log(val)
+        if (val === 1) {
+          return "中巴"
+        } else if (val === 2) {
+          return "大巴"
+        }
+        else if (val === 3) {
+          return "SUV"
+        }
+        else if (val === 4) {
+          return "轿车"
+        }
+      }
+    },
     methods: {
+      itemClick(index) {
+        this.$router.push({
+          name: 'VehicleDetails', query: {
+            id: this.data[index].id
+          }
+        })
+      },
       request() {
         const datas = {
           "page.pn": "1",
@@ -58,6 +81,8 @@
       }
     },
     created() {
+      let orderId = this.$root.sessionId
+      console.log(orderId)
       this.request()
     }
   }
@@ -103,8 +128,8 @@
     .btn
       width 70%
       padding 0.1rem
+      font-size 0.3rem
       border-radius 0.1rem
-      background red
-      color white
+      color #25a4bb
 
 </style>

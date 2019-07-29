@@ -4,9 +4,11 @@ import Home from '../pages/home/Home'
 import Hotel from '../pages/hotel/Hotel'
 import Login from '../pages/login/Login'
 import Register from '../pages/register/Register'
-import Subscribe from '../pages/subscribe/Subscribe'
-import calendar from '../common/calendar/calendar'
+import Subscribe from '../pages/subscribe/HotelSubscribe'
+import VehicleSubscribe from '../pages/subscribe/VehicleSubscribe'
+
 import RoomDetails from '../pages/details/RoomDetails'
+import VehicleDetails from '../pages/details/VehicleDetails'
 import VehicleList from '../pages/vehicle/VehicleList'
 
 Vue.use(Router)
@@ -40,18 +42,24 @@ export default new Router({
       component: Subscribe,
     },
     {
-      path: '/calendar',
-      name: 'Calendar',
-      component: calendar,
-    },
-    {
       path: '/roomdetails',
       name: 'RoomDetails',
       component: RoomDetails,
-    }, {
+    },
+    {
       path: '/vehiclelist',
       name: 'VehicleList',
       component: VehicleList,
+    },
+    {
+      path: '/vehicledetails',
+      name: 'VehicleDetails',
+      component: VehicleDetails,
+    },
+    {
+      path: '/vehiclesubscribe',
+      name: 'VehicleSubscribe',
+      component: VehicleSubscribe,
     }
   ],
   //界面切换时初始化界面高度
