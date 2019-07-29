@@ -13,7 +13,7 @@
         <p class="time-text">{{endTime}}</p>
       </div>
     </div>
-    <p class="house-price">房费总计：$168</p>
+    <p class="house-price">房费总计：￥{{price}}</p>
     <div class="tab-content">
       入住信息
     </div>
@@ -48,20 +48,26 @@
 
 <script>
   import DateTime from 'vue-date-time-m'
+  import axios from 'axios'
+  import Qs from 'Qs'
 
   export default {
     name: "Content",
+    props: {
+      roomId: String,
+      price: Number
+    },
     components: {
       DateTime
     },
     data() {
       return {
-        userName: '',
+        userName: "",
         idCard: '',
         mobile: '',
         remark: '',
-        startTime: '',
-        endTime: '',
+        startTime: "",
+        endTime: "",
         status: ''
       }
     },
@@ -79,7 +85,6 @@
       }
     },
     methods: {
-      //跳转到日历
       subscribeClick() {
         if (!this.userName) {
           console.log('请输入名字');
@@ -92,6 +97,29 @@
         if (!this.mobile) {
           console.log('请输入手机号');
           return;
+        }
+        const parm = {
+          roomId: this.roomId,
+          checkInTimeStr: this.startTime,
+          leaveTimeStr: this.endTime,
+          userName: this.userName,
+          userPhone: this.mobile,
+          userIdcard: this.idCard,
+          remarks: this.remark
+        }
+        axios({
+          method: 'post',
+          url: '/api/admin/jtlymanage/jtlybookhoteldetails/reserveRoom',
+          data: Qs.stringify(parm)
+        }).then(this.getHomeInfoSucc)
+
+      },
+      getHomeInfoSucc(res) {
+        const data = res.data;
+        const ret = data.ret;
+        alert(data.msg)
+        if (ret === 0) {
+          this.$router.go(-1);//返回上一层
         }
       },
       dayCalculation() {

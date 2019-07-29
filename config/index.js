@@ -12,7 +12,7 @@ module.exports = {
     proxyTable: {
       '/api': {
    target:'http://192.168.20.36:8090/jtly',
-  //  target: 'http://192.168.20.35:8082/jtly',
+    //target: 'http://192.168.20.35:8082/jtly',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''   //需要rewrite的,

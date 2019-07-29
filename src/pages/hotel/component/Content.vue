@@ -24,8 +24,6 @@
 </template>
 
 <script>
-  import axios from "axios"
-
   export default {
     name: "Content",
     props: {
@@ -33,39 +31,23 @@
     },
     data() {
       return {
-        baseurl: "http://192.168.20.35:8082/jtly/"
+        baseurl: "http://192.168.20.35:8082/jtly"
       }
     },
     methods: {
       subscribeClick(index) {
-        axios.post('/api/admin/jtlymanage/jtlymanageroom/getRoomDataList')
-          .then(res => {
-            // if (res.headers['set-cookie'] === undefined) {
-            //   this.$router.push({name: 'Login'})
-            // } else {
-            //   this.$router.push({
-            //     name: 'Subscribe', query: {
-            //       id: this.list[index].roomId,
-            //       name: this.list[index].roomName,
-            //     }
-            //   })
-            // }
-            this.$router.push({
-              name: 'Subscribe', query: {
-                id: this.list[index].roomId,
-                name: this.list[index].roomName,
-                name: this.list[index].price,
-              }
-            })
-          })
-          .catch(err => {
-            console.log(err)
-          })
-      },
-      itemClick(index){
         this.$router.push({
           name: 'RoomDetails', query: {
             id: this.list[index].roomId,
+            roomName: this.list[index].roomName,
+          }
+        })
+      },
+      itemClick(index) {
+        this.$router.push({
+          name: 'RoomDetails', query: {
+            roomId: this.list[index].roomId,
+            roomName: this.list[index].roomName,
           }
         })
       }

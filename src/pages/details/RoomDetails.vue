@@ -1,7 +1,7 @@
 <template>
   <div class="con">
     <room-banner
-      :sightName="description" :bannerImg="bannerImg" :content="content"></room-banner>
+      :sightName="title" :bannerImg="bannerImg" :content="content"></room-banner>
     <room-header :title="title"></room-header>
     <div>
       <div class="time">
@@ -14,11 +14,15 @@
           <p class="time-data-text">{{content.leaveTimeStr}}</p>
         </div>
       </div>
+      <p class="description">{{description}}</p>
       <div class="content-price">
-        <p>单价</p>
-        <p class="price">￥{{content.price}}</p>
-
-        <button class="btn" @click="Subscribe">预订</button>
+        <div class="div-price">
+          <p>单价</p>
+          <p class="price">￥{{price}}</p>
+        </div>
+        <div class="btn-price">
+          <button class="btn" @click="Subscribe">预订</button>
+        </div>
       </div>
     </div>
   </div>
@@ -33,11 +37,14 @@
     name: "RoomDetails",
     data() {
       return {
+        roomId: "",
+        roomName: '',
         title: "",
         description: "",
         bannerImg: "",
         content: Object,
-        gallaryImgs: []
+        gallaryImgs: [],
+        price: ""
       }
     },
     components: {
@@ -59,23 +66,33 @@
         this.description = content.description
         this.title = content.roomName
         this.content = content
+        this.price = content.price
         this.bannerImg = "http://192.168.20.35:8082/jtly/" + content.filepath
       },
-      Subscribe(){
-        // if (res.headers['set-cookie'] === undefined) {
-        //   this.$router.push({name: 'Login'})
-        // } else {
-        //   this.$router.push({
-        //     name: 'Subscribe', query: {
-        //       id: this.list[index].roomId,
-        //       name: this.list[index].roomName,
-        //     }
-        //   })
-        // }
+      Subscribe() {
+        axios.post('/api/admin/jtlymanage/jtlymanageroom/getRoomDataList')
+          .then(res => {
+            if (res.headers['set-cookie'] === undefined) {
+              this.$router.push({name: 'Login'})
+            } else {
+              this.$router.push({
+                name: 'Subscribe', query: {
+                  roomId: this.roomId,
+                  price: this.price,
+                  roomName: this.roomName,
+                }
+              })
+            }
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
     },
     created() {
-      this.request(this.$route.query.id);
+      this.roomId = this.$route.query.roomId
+      this.roomName = this.$route.query.roomName,
+        this.request(this.roomId);
     }
   }
 </script>
@@ -101,17 +118,30 @@
         line-height 0.3rem
         .time-data-text
           margin-top 0.1rem
-
+      .description
+        width 100%
+        color black
     .content-price
+      width 100%
+      height 0.6rem
       margin-top 0.3rem
       display flex
       flex-direction row
-      .price
-        color red
-      .btn
-        background red
-        color white
-        width 50px
-        height 25px
+      .div-price
+        display flex
+        flex-direction row
+        width 80%
+        .price
+          color red
+      .btn-price
+        width 20%
+        margin 0 auto
+        .btn
+          border-radius 0.1rem
+          padding 0 0.3rem
+          background red
+          text-align center
+          color white
+          height 25px
 
 </style>

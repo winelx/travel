@@ -4,9 +4,9 @@
     <div class="login_form">
       <div class="tab">
         <input type="text" class="qxs-ic_user qxs-icon" placeholder="用户名" v-model="userName">
-        <input type="text" class="qxs-ic_password qxs-icon" placeholder="密码" v-model="password">
+        <input type="password" class="qxs-ic_password qxs-icon" placeholder="密码" v-model="password">
         <input type="text" class="qxs-ic_email qxs-icon" placeholder="邮箱" v-model="email">
-        <button class="login_btn" @click="login" type="primary">注册</button>
+        <button class="login_btn" @click="register" type="primary">注册</button>
       </div>
     </div>
   </div>
@@ -18,6 +18,7 @@
 
 
   export default {
+    name:"Register",
     data() {
       return {
         userName: '',
@@ -32,7 +33,7 @@
       }
     },
     methods: {
-      login() {
+      register() {
         if (!this.userName) {
           console.log("请输入用户名")
           return;
@@ -61,10 +62,6 @@
         });
       },
     },
-    getHomeInfoSucc(res) {
-      res = res.data
-      console.log(res)
-    }
   }
 </script>
 

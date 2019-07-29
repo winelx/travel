@@ -1,9 +1,7 @@
 <template>
   <div id="app">
  <!--   //exclude起过滤效果-->
-    <keep-alive exclude="Detail">
       <router-view/>
-    </keep-alive>
   </div>
 </template>
 

@@ -4,14 +4,17 @@
     <div class="login_form">
       <div class="tab">
         <input type="text" class="qxs-ic_user qxs-icon" placeholder="用户名" v-model="userName">
-        <input type="text" class="qxs-ic_password qxs-icon" placeholder="密码" v-model="password">
-        <button class="login_btn" @click.native="login" type="primary" round :loading="isBtnLoading">登录</button>
+        <input type="password" class="qxs-ic_password qxs-icon" placeholder="密码" v-model="password">
+        <button class="login_btn" @click="login" type="primary" round :loading="isBtnLoading">登录</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
+  import Qs from 'Qs'
+
   export default {
     data() {
       return {
@@ -26,35 +29,35 @@
         this.password = JSON.parse(localStorage.getItem('user')).password;
       }
     },
-    computed: {
-      btnText() {
-        if (this.isBtnLoading) return '登录中...';
-        return '登录';
-      }
-    },
     methods: {
       login() {
+        console.log("登陆")
         if (!this.userName) {
-          this.$message.error('请输入用户名');
           return;
         }
         if (!this.password) {
-          this.$message.error('请输入密码');
           return;
         }
-        const pst = {
+        const  da={
           username: this.userName,
           password: this.password,
         }
-        axios({
-          method: 'post',
-          url: '/api/login',
-          data: Qs.stringify(pst)
-        }).then(function (response) {
-          console.log(response);
+        axios.post('/iface/mobile/login',Qs.stringify(da)
+        ).then(function (response) {
+
         }).catch(function (error) {
-          console.log(error);
+
         });
+
+        // axios({
+        //   method: 'post',
+        //   url: '/api/admin/login',
+        //   data: Qs.stringify(pst)
+        // }).then(function (response) {
+        //   console.log(response);
+        // }).catch(function (error) {
+        //   console.log(error);
+        // });
       },
       /**
        *

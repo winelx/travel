@@ -1,7 +1,7 @@
 <template>
   <div>
     <base-header :title="title"></base-header>
-    <subscribe-content></subscribe-content>
+    <subscribe-content :roomId="roomId" :price="price"></subscribe-content>
   </div>
 </template>
 
@@ -10,10 +10,15 @@
   import SubscribeContent from "./component/Content"
 
   export default {
-    name: "subscribe",
+    name: "Subscribe",
+    props:{
+
+    },
     data() {
       return {
-        title: "预订"
+        title: "预订",
+        roomId:"",
+        price:""
       }
     },
     components: {
@@ -21,13 +26,12 @@
       SubscribeContent
     },
     methods: {
-      init() {
-        console.log(this.$route.query.id)
-        console.log(this.$route.query.name)
-      }
+
     },
     created() {
-      this.init();
+      this.roomId=this.$route.query.roomId
+      this.title= this.$route.query.roomName
+      this.price= this.$route.query.price
 
     }
   }
