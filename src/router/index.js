@@ -54,6 +54,15 @@ export default new Router({
       path: '/vehiclelist',
       name: 'VehicleList',
       component: VehicleList,
+    }, {
+      path: '/car',
+      component: Car,
+    }, {
+      path: '/carinfo',
+      component: CarInfo,
+    }, {
+      path: '/userin',
+      component: userin,
     },
     {
       path: '/vehicledetails',
