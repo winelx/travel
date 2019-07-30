@@ -5,9 +5,11 @@ import Hotel from '../pages/hotel/Hotel'
 
 import Login from '../pages/login/Login'
 import Register from '../pages/register/Register'
-import Subscribe from '../pages/subscribe/Subscribe'
-import calendar from '../common/calendar/calendar'
+import Subscribe from '../pages/subscribe/HotelSubscribe'
+import VehicleSubscribe from '../pages/subscribe/VehicleSubscribe'
+
 import RoomDetails from '../pages/details/RoomDetails'
+import VehicleDetails from '../pages/details/VehicleDetails'
 import VehicleList from '../pages/vehicle/VehicleList'
 import Car from '../pages/car/Car'
 import CarInfo from '../pages/car/Carinfo'
@@ -44,15 +46,11 @@ export default new Router({
       component: Subscribe,
     },
     {
-      path: '/calendar',
-      name: 'Calendar',
-      component: calendar,
-    },
-    {
       path: '/roomdetails',
       name: 'RoomDetails',
       component: RoomDetails,
-    }, {
+    },
+    {
       path: '/vehiclelist',
       name: 'VehicleList',
       component: VehicleList,
@@ -65,6 +63,16 @@ export default new Router({
     }, {
       path: '/userin',
       component: userin,
+    },
+    {
+      path: '/vehicledetails',
+      name: 'VehicleDetails',
+      component: VehicleDetails,
+    },
+    {
+      path: '/vehiclesubscribe',
+      name: 'VehicleSubscribe',
+      component: VehicleSubscribe,
     }
   ],
   //界面切换时初始化界面高度

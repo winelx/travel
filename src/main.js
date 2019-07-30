@@ -25,6 +25,19 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
-  components: {App},
+  data: function(){
+    return {
+      jsonId: '1212',
+    }
+  },
+  components: {App,Counter},
   template: '<App/>'
 })
+const Counter = {
+  template: `<div>{{ count }}</div>`,
+  computed: {
+    count () {
+      return this.$store.state.count
+    }
+  }
+}
