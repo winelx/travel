@@ -23,28 +23,19 @@
             imgUrl: "//s.qunarzz.com/homenode/images/touchheader/hotel.png"
 
           }, {
-            desc: "滑雪季",
+            desc: "登陆",
             id: "02",
             imgUrl: "http://img1.qunarzz.com/piao/fusion/1711/df/86cbcfc533330d02.png"
 
           }, {
-            desc: "泡温泉",
+            desc: "注册",
             id: "03",
             imgUrl: "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png"
           }, {
-            desc: "景点门票",
+            desc: "车辆租赁",
             id: "04",
             imgUrl: "http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png"
 
-          }, {
-            desc: "滑雪季",
-            id: "05",
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1711/df/86cbcfc533330d02.png"
-
-          }, {
-            desc: "泡温泉",
-            id: "06",
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png"
           }
         ],
       }
@@ -58,7 +49,7 @@
 
 
     },
-    created(){
+    created() {
     }
   }
 </script>

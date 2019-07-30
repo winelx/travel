@@ -38,10 +38,8 @@
       }
     },
     methods: {
-      back() {
-        this.$router.go(-1);//返回上一层
-      },
       login() {
+        let _this = this
         if (!this.userName) {
           return;
         }
@@ -55,12 +53,13 @@
         axios.post('/api/iface/mobile/login', Qs.stringify(da)
         ).then(function (response) {
           const data = response.data;
+
           const json = data.extend.JSESSIONID
-          this.jsonid = json
-          Console.log(this.count());
+          console.log(json)
+          _this.$store.dispatch("change", json)
           const rets = data.ret;
           if (rets === 0) {
-            this.back()
+            _this.$router.go(-1);//返回上一层
           }
         }).catch(function (error) {
         });
@@ -70,12 +69,8 @@
        */
       getHomeInfoSucc(res) {
         res = res.data
-        console.log(res)
       }
     },
-    created() {
-
-    }
   }
 </script>
 

@@ -10,6 +10,8 @@ import VehicleSubscribe from '../pages/subscribe/VehicleSubscribe'
 import RoomDetails from '../pages/details/RoomDetails'
 import VehicleDetails from '../pages/details/VehicleDetails'
 import VehicleList from '../pages/vehicle/VehicleList'
+import MyOrderList from '../pages/vehicle/MyOrderList'
+import HotelOrderList from '../pages/vehicle/HotelOrderList'
 
 Vue.use(Router)
 
@@ -60,6 +62,16 @@ export default new Router({
       path: '/vehiclesubscribe',
       name: 'VehicleSubscribe',
       component: VehicleSubscribe,
+    }, {
+
+      path: '/myorderlist',
+      name: 'MyOrderList',
+      component: MyOrderList,
+    }, {
+
+      path: '/hotelorderlist',
+      name: 'HotelOrderList',
+      component: HotelOrderList,
     }
   ],
   //界面切换时初始化界面高度

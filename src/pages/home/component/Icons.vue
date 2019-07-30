@@ -49,9 +49,7 @@
         } else if (index === "03") {
           this.$router.push({name: 'Register'});
         } else if (index === "04") {
-          this.$router.push({name: 'Subscribe'});
-        }else if (index==='05'){
-          this.$router.push('VehicleList');
+          this.$router.push({name: 'VehicleList'});
         }
       }
     }

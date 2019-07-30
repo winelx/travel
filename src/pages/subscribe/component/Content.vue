@@ -86,6 +86,7 @@
     },
     methods: {
       subscribeClick() {
+
         if (!this.userName) {
           console.log('请输入名字');
           return;
@@ -115,10 +116,12 @@
 
       },
       getHomeInfoSucc(res) {
+        let _this=this
         const data = res.data;
         const ret = data.ret;
         alert(data.msg)
         if (ret === 0) {
+          _this.$router.push({name: 'HotelOrderList'})
           this.$router.go(-1);//返回上一层
         }
       },
@@ -228,7 +231,6 @@
         background: #cc5946;
         text-align center
     .qxs-ic_user
-      background: url("../../../assets/login/ic_user.png") no-repeat;
       background-size: 13px 15px;
       background-position: 3%;
       font-family "黑体"

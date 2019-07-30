@@ -24,7 +24,6 @@
   import axios from "axios"
   import Qs from "Qs"
   import BaseHeader from "../../common/header/BaseHeader"
-
   export default {
     name: "VehicleList",
     data() {
@@ -81,8 +80,8 @@
       }
     },
     created() {
-      let orderId = this.$root.sessionId
-      console.log(orderId)
+      const id= this.$store.state.jsonId;
+      console.log("这是输入"+id)
       this.request()
     }
   }

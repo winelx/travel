@@ -69,14 +69,16 @@
         startTime: "",
         endTime: "",
         status: '',
-        lesseeId: "",//租赁人
+        lesseeid: "",//租赁人
         userName: "",
         idCard: "",
+        driverId: "",
         mobile: "",
         selfDriving: "",
         driverName: "",
         carNumber: "",
-        rentalCarPrice: ""
+        rentalCarPrice: "",
+        //接口返回数据
       }
     },
     filters: {
@@ -123,31 +125,63 @@
         }
       },
       lesseeIdrequest() {
-        let sessionId = this.$root.sessionId
-        console.log(sessionId)
-        axios.get("/api/admin/bookcar/carleaseinfo/getUserInfo",{
-          headers: {
-            'Authorization': 'Bearer ' + token,
-            'Cookie': "JSESSIONID=" + sessionId
-          }
-        })
+        let _this = this;
+        const jsonid = this.$store.state.jsonId;
+        axios.get("/api/admin/bookcar/carleaseinfo/getUserInfo")
           .then(function (response) {
-            console.log(response);
+            const data = response.data;
+            console.log(data)
+            _this.lesseeid = data.data.id
+            _this.userName = data.data.username
+            _this.mobile = data.data.phone
+
           })
       },
       Subscribe() {
-
+        let _this = this
+        const pare = {
+          carId: this.id,//id
+          selfDriving: this.selfDriving,//是否自驾
+          driverId: this.driverId,//租车人id
+          rent: this.rentalCarPrice,//单价
+          lesseeBeginDate: this.startTime,//开始时间
+          lesseeEndDate: this.endTime,//结束时间
+          lesseeId: this.lesseeid,//租车人id
+          lesseeName: this.userName,//租车人名族
+          lesseeIdcard: this.idCard,//身份证
+          lesseePhone: this.mobile,//手机号
+        }
+        const jsonid = this.$store.state.jsonId;
+        console.log(jsonid)
+        axios({
+          method: 'post',
+          url: '/api/admin/bookcar/carleaseinfo/save',
+          data: Qs.stringify(pare),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Cookie': "JSESSIONID=" + jsonid + "; JJCenter=" + jsonid
+          }
+        }).then(function (response) {
+          console.log(response);
+          const data = response.data;
+          const ret = data.ret;
+          if (ret === 0) {
+            _this.$router.push({name: 'HotelOrderList'})
+          }
+        }).catch(function (error) {
+          console.log(error);
+        });
       }
     },
     created() {
       /*   车辆id*/
       this.id = this.$route.query.id
-      console.log(this.id)
       // /*//是否允许自驾*/
       this.selfDriving = this.$route.query.selfDriving
       this.driverName = this.$route.query.driverName//驾驶员名字信息
       this.carNumber = this.$route.query.carNumber//车牌
       this.rentalCarPrice = this.$route.query.CarPrice//租车单价
+      this.driverId = this.$route.query.driverId//驾驶员Id
       this.dayCalculation();
       this.lesseeIdrequest();
     }

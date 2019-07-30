@@ -9,6 +9,7 @@ import 'styles/reset.css'
 import 'styles/border.css'
 import 'styles/iconfont.css'
 import 'swiper/dist/css/swiper.css'
+import store from './store/store'
 import axios from 'axios'
 //允许跨域
 axios.defaults.withCredentials=true
@@ -25,6 +26,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  store,
   data: function(){
     return {
       jsonId: '1212',

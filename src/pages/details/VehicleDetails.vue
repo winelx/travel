@@ -62,8 +62,7 @@
     },
     methods: {
       subscribe() {
-        console.log("fdsafds"+this.$root.sessionId)
-        if (this.$root.sessionId === "") {
+        if ( this.$store.state.jsonId === "") {
           this.$router.push({name: 'Login'})
         } else {
           this.$router.push({
@@ -73,6 +72,7 @@
               driverName: this.driverName,//驾驶员名字信息
               carNumber: this.carNumber,//车牌
               CarPrice: this.rentalCarPrice,//租车单价
+              driverId: this.data.driverId,//驾驶员Id
             }
           })
         }
@@ -81,6 +81,7 @@
         const data = {
           "id": this.id
         }
+
         axios({
           method: 'post',
           url: '/api/admin/bookcar/carinfo/detail',
@@ -90,6 +91,7 @@
       getHomeInfoSucc(res) {
         const data = res.data
         this.data = data.data;
+        console.log(data)
         this.describe = data.data.describe;
         this.selfDriving = data.data.selfDriving;
         this.rentalCarPrice = data.data.rentalCarPrice;

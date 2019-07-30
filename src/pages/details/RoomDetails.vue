@@ -70,23 +70,18 @@
         this.bannerImg = "http://192.168.20.35:8082/jtly/" + content.filepath
       },
       Subscribe() {
-        axios.post('/api/admin/jtlymanage/jtlymanageroom/getRoomDataList')
-          .then(res => {
-            if (res.headers['set-cookie'] === undefined) {
-              this.$router.push({name: 'Login'})
-            } else {
-              this.$router.push({
-                name: 'Subscribe', query: {
-                  roomId: this.roomId,
-                  price: this.price,
-                  roomName: this.roomName,
-                }
-              })
+        //登陆前验证是否登陆过
+        if (this.$store.state.jsonId === "") {
+          this.$router.push({name: 'Login'})
+        } else {
+          this.$router.push({
+            name: 'Subscribe', query: {
+              roomId: this.roomId,
+              price: this.price,
+              roomName: this.roomName,
             }
           })
-          .catch(err => {
-            console.log(err)
-          })
+        }
       }
     },
     created() {

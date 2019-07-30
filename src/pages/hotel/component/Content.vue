@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="subscribe">
-          <div class="button" @click="subscribeClick(index)">预订</div>
+          <div class="button" @click="subscribeClick(index)">查看</div>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
     },
     data() {
       return {
-        baseurl: "http://192.168.20.35:8082/jtly"
+        baseurl: "http://192.168.20.36:8090/jtly/"
       }
     },
     methods: {
@@ -120,7 +120,7 @@
           color white
           width: 1rem;
           margin-top 0.35rem
-          background #dc242e
+          background #28bcff
       .price
         display flex
         position relative
