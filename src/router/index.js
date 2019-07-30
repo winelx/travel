@@ -2,12 +2,16 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../pages/home/Home'
 import Hotel from '../pages/hotel/Hotel'
+
 import Login from '../pages/login/Login'
 import Register from '../pages/register/Register'
 import Subscribe from '../pages/subscribe/Subscribe'
 import calendar from '../common/calendar/calendar'
 import RoomDetails from '../pages/details/RoomDetails'
 import VehicleList from '../pages/vehicle/VehicleList'
+import Car from '../pages/car/Car'
+import CarInfo from '../pages/car/Carinfo'
+import userin from '../pages/car/userIn'
 
 Vue.use(Router)
 
@@ -52,6 +56,15 @@ export default new Router({
       path: '/vehiclelist',
       name: 'VehicleList',
       component: VehicleList,
+    }, {
+      path: '/car',
+      component: Car,
+    }, {
+      path: '/carinfo',
+      component: CarInfo,
+    }, {
+      path: '/userin',
+      component: userin,
     }
   ],
   //界面切换时初始化界面高度

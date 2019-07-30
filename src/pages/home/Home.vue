@@ -45,6 +45,10 @@
             desc: "泡温泉",
             id: "06",
             imgUrl: "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png"
+          }, {
+            desc: "列表",
+            id: "07",
+            imgUrl: "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png"
           }
         ],
       }

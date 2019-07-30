@@ -53,6 +53,9 @@
         }else if (index==='05'){
           this.$router.push('VehicleList');
         }
+        else if (index==='07'){
+          this.$router.push('car');
+        }
       }
     }
   }
