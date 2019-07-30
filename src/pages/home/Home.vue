@@ -35,7 +35,6 @@
             desc: "车辆租赁",
             id: "04",
             imgUrl: "http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png"
-
           }
         ],
       }

@@ -51,6 +51,9 @@
         } else if (index === "04") {
           this.$router.push({name: 'VehicleList'});
         }
+        else if (index==='07'){
+          this.$router.push('car');
+        }
       }
     }
   }

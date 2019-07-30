@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../pages/home/Home'
 import Hotel from '../pages/hotel/Hotel'
+
 import Login from '../pages/login/Login'
 import Register from '../pages/register/Register'
 import Subscribe from '../pages/subscribe/HotelSubscribe'
@@ -10,8 +11,14 @@ import VehicleSubscribe from '../pages/subscribe/VehicleSubscribe'
 import RoomDetails from '../pages/details/RoomDetails'
 import VehicleDetails from '../pages/details/VehicleDetails'
 import VehicleList from '../pages/vehicle/VehicleList'
+
 import MyOrderList from '../pages/vehicle/MyOrderList'
 import HotelOrderList from '../pages/vehicle/HotelOrderList'
+
+import Car from '../pages/car/Car'
+import CarInfo from '../pages/car/Carinfo'
+import userin from '../pages/car/userIn'
+
 
 Vue.use(Router)
 
@@ -52,6 +59,15 @@ export default new Router({
       path: '/vehiclelist',
       name: 'VehicleList',
       component: VehicleList,
+    }, {
+      path: '/car',
+      component: Car,
+    }, {
+      path: '/carinfo',
+      component: CarInfo,
+    }, {
+      path: '/userin',
+      component: userin,
     },
     {
       path: '/vehicledetails',
